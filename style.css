@@ -1,0 +1,46 @@
+:root {
+    --spin: 360deg;
+    --interval: 1s;
+}
+
+#roulette-container {
+    margin: 0px;
+}
+
+#roulette {
+    display: none;
+    content: url("https://avatanplus.com/files/resources/mid/570b92402770515405334aa2.png");
+    margin: 280px 250px;
+    width: 160px;
+}
+
+#runner {
+    cursor: pointer;
+    content: url("https://static3.depositphotos.com/1000363/104/i/950/depositphotos_1045246-stock-photo-go-button.jpg");
+    margin: 260px 260px;
+    width: 160px;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(var(--spin));}
+}
+
+
+#roulette {
+
+}
+
+.spinning {
+    animation: spin var(--interval) ease-in-out 1;
+    transform: rotate(var(--spin));
+}
+
+.wins {
+    transition: width linear 1s, z-index ease-in 1s, top linear 1s, left linear 1s;
+    position: absolute;
+    left: 200px !important;
+    top: 200px !important;
+    z-index: 99;
+    width: 300px !important;
+}
