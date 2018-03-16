@@ -3,21 +3,31 @@
     --interval: 1s;
 }
 
+#playground {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+#playground * {
+    position: absolute;
+}
+
 #roulette-container {
     margin: 0px;
 }
 
 #roulette {
     display: none;
-    content: url("https://avatanplus.com/files/resources/mid/570b92402770515405334aa2.png");
-    margin: 280px 250px;
+    content: url("http://www.photoshop-work.ru/images/8/13.jpg");
+    margin: 180px 180px;
     width: 160px;
 }
 
 #runner {
     cursor: pointer;
     content: url("https://static3.depositphotos.com/1000363/104/i/950/depositphotos_1045246-stock-photo-go-button.jpg");
-    margin: 260px 260px;
+    margin: 180px 180px;
     width: 160px;
 }
 
@@ -39,8 +49,20 @@
 .wins {
     transition: width linear 1s, z-index ease-in 1s, top linear 1s, left linear 1s;
     position: absolute;
-    left: 200px !important;
-    top: 200px !important;
+    left: 120px !important;
+    top: 120px !important;
     z-index: 99;
     width: 300px !important;
+}
+
+.win-message {
+    position: absolute;
+    display: none;
+    padding: 8px;
+    top: 320px;
+    left: 120px;
+    width: 300px;
+    text-align: center;
+    z-index: 99;
+    background: white;
 }

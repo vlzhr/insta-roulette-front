@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Розыгрыш призов для участников GiveAway</title>
     <script src="script.js"></script>
     <script src="items_to_elements.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page-style.css">
 </head>
 <body>
-    <div id="playground">
-        <div id="roulette-container">
-            <div id="roulette" class="rot"></div>
-            <div id="runner" onclick="run()"></div>
+    <section>
+        <h1>Розыгрыш призов для участников конкурса</h1>
+        <p>Дорогие участника конкурса от Магазина, нажмите Go, чтобы забрать свой приз!</p>
+        <div id="playground">
+            <div id="roulette-container">
+                <div id="roulette" class="rot"></div>
+                <div id="runner" onclick="run()"></div>
+            </div>
+            <div class="win-message">Вы выиграли этот приз! Напишите организатору, чтобы забрать его.</div>
         </div>
-    </div>
+        <footer>
+            &copy; 2018
+        </footer>
+    </section>
 </body>
 </html>
