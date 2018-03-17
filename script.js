@@ -1,19 +1,20 @@
-const items = Array(18).fill("https://wwws.dior.com/couture/ecommerce/media/catalog/product/cache/1/zoom_alt_image_1/920x/17f82f742ffe127f42dca9de82fb58b1/C/A/1508399849_CAL44550_N0_E01_Z.jpg")
+const items = loadItems();
+const win_n = loadWin();
 const size = 800;
 const offset = 20;
-const interval = 0.01;
+const interval = 8;
 
 window.onload = function () {
     for (const item_n in items) {
         el = to_element(item_n);
         document.querySelector("#playground").appendChild(el);
     }
-}
+};
 
 function run () {
     document.querySelector("#roulette").style.display = "block";
     document.querySelector("#runner").style.display = "none";
-    const items_n = Math.floor(Math.random()*items.length);
+    const items_n = win_n;
     console.log(items_n);
     document.documentElement.style.setProperty('--spin', 3600 + 180 + 360*(+items_n/items.length) + "deg", "important");
     document.querySelector("#roulette").classList.add("spinning");
