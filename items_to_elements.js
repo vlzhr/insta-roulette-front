@@ -9,7 +9,7 @@ function to_element(item_n) {
     el.style.top = y+"px";
     el.style.left = x+"px";
     el.style.content = 'url('+item+')';
-    el.style.width = size / items.length*2 + "px";
+    el.style.width =  items.length > 18 ? size / items.length*2 + "px" : "100px";
     el.classList.add("item");
     return el;
 }

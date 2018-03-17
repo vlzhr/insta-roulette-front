@@ -63,6 +63,10 @@
     left: 120px;
     width: 300px;
     text-align: center;
-    z-index: 99;
+    z-index: 999;
     background: white;
+}
+
+.item {
+    width: 100px;
 }
