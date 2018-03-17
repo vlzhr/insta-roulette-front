@@ -1,5 +1,6 @@
 const size = 800;
 const offset = 20;
+
 const interval = 8;
 let run;
 let name;
@@ -16,6 +17,7 @@ loadItems().then(function(val) {
 
 
 function afterPromises (items, win_n) {
+
 
     for (const item_n in items) {
         console.log(item_n);
