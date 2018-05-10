@@ -13,3 +13,7 @@ footer {
     border-top: 1px solid black;
     padding: 15px 0px;
 }
+
+img {
+    max-width: 200px;
+}

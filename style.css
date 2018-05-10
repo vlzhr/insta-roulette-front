@@ -36,6 +36,14 @@
     to {transform:rotate(var(--spin));}
 }
 
+@-webkit-keyframes spin {
+    from {-webkit-transform:rotate(0deg);}
+    to {
+        -webkit-transform:rotate(var(--spin));
+    }
+}
+
+
 
 #roulette {
 
@@ -43,11 +51,16 @@
 
 .spinning {
     animation: spin var(--interval) ease-in-out 1;
+    -webkit-animation: spin var(--interval) ease-in-out 1;
     transform: rotate(var(--spin));
+    -webkit-transform: rotate(var(--spin));
 }
 
 .wins {
-    transition: width linear 1s, z-index ease-in 1s, top linear 1s, left linear 1s;
+    transition: width ease-in 2s, z-index ease-in 2s, top linear 2s, left linear 2s;
+    /*-webkit-transition-delay: 4s;
+    -webkit-transition-timing-function: ease-in;
+    -webkit-transition: width, z-index, top, left;*/
     position: absolute;
     left: 120px !important;
     top: 120px !important;

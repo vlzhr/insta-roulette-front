@@ -1,16 +1,27 @@
+function getQName() {
+    let name = window.location.href.split("?q=")[1];
+    name == undefined ? name = "vova" : name = name;
+    return name;
+}
+
 function loadItems() {
+    const name = getQName();
     return new Promise((resolve, reject) => {
         function reqListener() {
             const obj = JSON.parse(this.responseText);
-            let li =[];
-            for (const n in obj) {
-                li.push(n);
+            if (obj.already) {
+                resolve({"already": obj.already});
+            } else {
+                let li = [];
+                for (const n in obj.items) {
+                    li.push(n);
+                }
+                resolve({"items": li});
             }
-            resolve(li);
         }
         const oReq = new XMLHttpRequest();
         oReq.addEventListener("load", reqListener);
-        oReq.open("GET", "http://win.vkbc.ru/get_items");
+        oReq.open("GET", "http://win.vkbc.ru/get_items?q="+name);
         oReq.send();
     });
 
@@ -19,8 +30,12 @@ function loadItems() {
 }
 
 function loadWin() {
-    name = window.location.href.split("&q=")[window.location.href.split("&q=").length - 1];
-    name == undefined ? name = "vova" : name = name;
+    const name = getQName();
+    if (name === "") {
+        return new Promise((resolve, reject) => {
+            resolve(3);
+        })
+    }
     return new Promise((resolve, reject) => {
         function reqListener() {
             const answer = this.responseText;

@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Розыгрыш призов для участников GiveAway</title>
-    <script src="server_requests.js"></script>
-    <script src="script.js"></script>
-    <script src="items_to_elements.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="page-style.css">
+    <link rel="stylesheet" href="index-style.css">
 </head>
 <body>
     <section>
-        <h1>Розыгрыш призов для участников конкурса</h1>
-        <p>Дорогие участника конкурса от Магазина, нажмите Go, чтобы забрать свой приз!</p>
-        <div id="playground">
-            <div id="roulette-container">
-                <div id="roulette" class="rot"></div>
-                <div id="runner" onclick="run()"></div>
+        <header>
+            <div class="shares">
+                <div class="share-button"><a href="https://www.facebook.com/leobabybrand/"><i class="fa fa-facebook"></i></a></div>
+                <div class="share-button"><a href="https://vk.com/vk.leobaby"><i class="fa fa-vk"></i></a></div>
+                <div class="share-button"><a href="https://www.instagram.com/leobabyshop"><i class="fa fa-instagram"></i></a></div>
+                <img class="share-button" style="width:20px" src="images-1/logo.jpg" onclick="location = 'http://leobabyshop.1step.online/'">
             </div>
-            <div class="win-message">Вы выиграли этот приз! Напишите организатору, чтобы забрать его.</div>
+            <img src="images-1/logo.jpg" alt="logo" class="logo">
+            <div class="title">Розыгрыш призов для участников конкурса</div>
+        </header>
+
+        <div class="number-form">
+            <p>Пожалуйста, введите Ваш номер!</p>
+            <form action="play.html">
+                <input type="text" name="q" placeholder="Номер">
+                <input type="submit">
+            </form>
+        </div>
+        
+        <div class="images-raw-container">
+            <div class="images-raw">
+                <div class="index-image"><img src="images-1/1-min.jpg" alt="ребенок"></div>
+                <div class="index-image"><img src="images-1/2-min.jpg" alt="ребенок"></div>
+                <div class="index-image"><img src="images-1/3.1-min.jpg" alt="ребенок"><img src="images-1/3.2-min.jpg" alt="ребенок"></div>
+                <div class="index-image"><img src="images-1/4-min.jpg" alt="ребенок"></div>
+                <div class="index-image"><img src="images-1/5-min.jpg" alt="ребенок"></div>
+            </div>
         </div>
         <footer>
             &copy; 2018
