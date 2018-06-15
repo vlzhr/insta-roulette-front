@@ -1,12 +1,14 @@
 :root {
+    --clickOn: 0deg;
     --spin: 360deg;
-    --interval: 1s;
+    --interval: 4s;
 }
 
 #playground {
+    margin: 50px auto;
     position: relative;
-    width: 100%;
-    height: 400px;
+    width: 550px;
+    height: 550px;
 }
 
 #playground * {
@@ -19,27 +21,40 @@
 
 #roulette {
     display: none;
-    content: url("http://www.photoshop-work.ru/images/8/13.jpg");
-    margin: 180px 180px;
+    content: url("images-3/arrow.png");
+    margin: 230px 200px;
     width: 160px;
 }
 
 #runner {
     cursor: pointer;
-    content: url("https://static3.depositphotos.com/1000363/104/i/950/depositphotos_1045246-stock-photo-go-button.jpg");
-    margin: 180px 180px;
+    content: url("button.png");
+    /*url("https://static3.depositphotos.com/1000363/104/i/950/depositphotos_1045246-stock-photo-go-button.jpg")*/
+    margin: 195px;
     width: 160px;
+}
+
+@keyframes end-spin {
+    from {transform:rotate(var(--clickOn));}
+    to {transform:rotate(var(--spin));}
+}
+
+@-webkit-keyframes end-spin {
+    from {-webkit-transform:rotate(var(--clickOn));}
+    to {
+        -webkit-transform:rotate(var(--spin));
+    }
 }
 
 @keyframes spin {
     from {transform:rotate(0deg);}
-    to {transform:rotate(var(--spin));}
+    to {transform:rotate(359deg);}
 }
 
 @-webkit-keyframes spin {
     from {-webkit-transform:rotate(0deg);}
     to {
-        -webkit-transform:rotate(var(--spin));
+        -webkit-transform:rotate(359deg);
     }
 }
 
@@ -50,8 +65,13 @@
 }
 
 .spinning {
-    animation: spin var(--interval) ease-in-out 1;
-    -webkit-animation: spin var(--interval) ease-in-out 1;
+    animation: spin .7s linear infinite;
+    -webkit-animation: spin .7s linear infinite;
+}
+
+.finishing {
+    animation: end-spin var(--interval) ease-out 1;
+    -webkit-animation: end-spin var(--interval) ease-out 1;
     transform: rotate(var(--spin));
     -webkit-transform: rotate(var(--spin));
 }
@@ -61,25 +81,107 @@
     /*-webkit-transition-delay: 4s;
     -webkit-transition-timing-function: ease-in;
     -webkit-transition: width, z-index, top, left;*/
-    position: absolute;
-    left: 120px !important;
-    top: 120px !important;
-    z-index: 99;
+    left: 125px !important;
+    top: 160px !important;
+    z-index: 103;
+    position: absolute !important;
     width: 300px !important;
+    max-width: 300px;
+    max-height: 300px;
+}
+.wins::after {
+    content: "Вы выиграли этот приз. Свяжитесь с организатором для получения!";
+    display: block;
+    background: white;
+    padding: 12px;
+    clear: both;
 }
 
 .win-message {
     position: absolute;
     display: none;
-    padding: 8px;
-    top: 320px;
-    left: 120px;
-    width: 300px;
+    padding: 20px 12px;
+    left: 110px;
+    width: 320px;
+    box-sizing: border-box;
     text-align: center;
-    z-index: 999;
     background: white;
+    padding-top: 232px;
+    top: 115px !important;
+    z-index: 101;
+    border-radius: 10px;
+    border: dotted 1px #654834;
 }
 
 .item {
-    width: 100px;
+    border-radius: 50px;
+    border: 2px solid #FC9C4F;
+    min-height: 100px;
+    background: white;
+    min-width: 100px;
+}
+
+.item img {
+    position: relative !important;
+    margin: 15px;
+    z-index: 100;
+    max-width: 90px;
+    max-height: 100px;
+}
+
+
+body {
+    background-image: linear-gradient(to top, #fff 0%, #fff 0%, #FC9C4F 30%, #fff 35%, #fff);
+}
+
+
+
+
+.rules-message {
+    color: #222;
+    position: absolute;
+    left: 30px;
+    padding: 30px;
+    padding-top: 60px;
+    right: 30px;
+    top: 20px;
+    height: 290px;
+    border-radius: 10px;
+    border: 3px dotted #ccc;
+    background-color: white;
+    background-image: url("images-1/bg.png");
+    background-position: center bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 102;
+}
+
+.rules-message p {
+    position: relative !important;
+}
+
+.rules-closer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    content: url("images-1/close.png");
+    cursor: pointer;
+}
+
+.close-text {
+    position: absolute;
+    bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    left: 0px;
+    color: indianred;
+    cursor: pointer;
+}
+
+
+
+.win {
+    position: relative !important;
+    margin-bottom: 50px;
 }

@@ -136,4 +136,7 @@ footer {
         position: static;
         margin: 0px auto 20px;
     }
+    .number-form {
+        width: 100%;
+    }
 }

@@ -1,46 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48015212-10"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-48015212-10');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Розыгрыш призов для участников GiveAway</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="page-style.css">
     <link rel="stylesheet" href="index-style.css">
+    <style>
+        .logo {
+            z-index: 99;
+        }
+        article {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .image-container {
+            width: 33.3%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .image-container img {
+            width: 100%;
+        }
+        img {
+            max-width: none;
+        }
+        .number-form {
+            margin: 0px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 22px;
+        }
+        .submit-button {
+            color: white;
+            background-color: #FC9C4F;
+        }
+        .losung {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 160px;
+        }
+        @media (max-width: 600px) {
+            article {
+                flex-direction: column;
+            }
+            body {
+                margin: 10px 0px;
+            }
+            article>* {
+                margin-bottom: 50px;
+            }
+            .losung {
+                width: 100px;
+            }
+        }
+    </style>
+    <script src="server_requests.js"></script>
+    <script>
+        let codes = [];
+        loadCodes().then((data) => {
+            codes = data;
+            data.push("juse");
+        });
+
+        function onSubmit() {
+            const q = document.querySelector(".q");
+            if (q.value === "" || !codes.includes(q.value.replace(/^\s+|\s+$/g, ''))) {
+                q.style.borderColor = "red";
+                q.style.borderWidth = "3px";
+                event.preventDefault();
+            }
+        }
+    </script>
 </head>
 <body>
     <section>
         <header>
+            <img src="images-2/4.png" class="losung" alt="losung">
             <div class="shares">
-                <div class="share-button"><a href="https://www.facebook.com/leobabybrand/"><i class="fa fa-facebook"></i></a></div>
+                <!--<div class="share-button"><a href="https://www.facebook.com/leobabybrand/"><i class="fa fa-facebook"></i></a></div>-->
                 <div class="share-button"><a href="https://vk.com/vk.leobaby"><i class="fa fa-vk"></i></a></div>
                 <div class="share-button"><a href="https://www.instagram.com/leobabyshop"><i class="fa fa-instagram"></i></a></div>
-                <img class="share-button" style="width:20px" src="images-1/logo.jpg" onclick="location = 'http://leobabyshop.1step.online/'">
+                <!--<img class="share-button" style="width:20px" src="images-1/logo.jpg" onclick="location = 'http://leobabyshop.1step.online/'">-->
             </div>
             <img src="images-1/logo.jpg" alt="logo" class="logo">
             <div class="title">Розыгрыш призов для участников конкурса</div>
         </header>
 
-        <div class="number-form">
-            <p>Пожалуйста, введите Ваш номер!</p>
-            <form action="play.html">
-                <input type="text" name="q" placeholder="Номер">
-                <input type="submit">
-            </form>
-        </div>
-        
-        <div class="images-raw-container">
-            <div class="images-raw">
-                <div class="index-image"><img src="images-1/1-min.jpg" alt="ребенок"></div>
-                <div class="index-image"><img src="images-1/2-min.jpg" alt="ребенок"></div>
-                <div class="index-image"><img src="images-1/3.1-min.jpg" alt="ребенок"><img src="images-1/3.2-min.jpg" alt="ребенок"></div>
-                <div class="index-image"><img src="images-1/4-min.jpg" alt="ребенок"></div>
-                <div class="index-image"><img src="images-1/5-min.jpg" alt="ребенок"></div>
+
+        <article>
+            <div class="image-container">
+                <img src="images-2/1.png" alt="image 1">
             </div>
-        </div>
+            <div class="number-form">
+                <p>Пожалуйста, введите Ваш номер!</p>
+                <form action="play.html">
+                    <input type="text" name="q" class="q" placeholder="Номер">
+                    <input type="submit" class="submit-button" onclick="onSubmit(event)">
+                </form>
+                <img src="images-2/2.jpg" alt="image 2">
+            </div>
+            <div class="image-container">
+                <img src="images-2/3.png" alt="image 3">
+            </div>
+        </article>
+
         <footer>
             &copy; 2018
         </footer>
     </section>
 </body>
+<script>
+    const windowWidth = (window.innerWidth - 100);
+    if (windowWidth > 600) {
+        [...document.querySelectorAll(".image-container img")].forEach(x => x.style.width = windowWidth * 0.275 + "px");
+        [...document.querySelectorAll(".image-container")].forEach(x => x.style.width = windowWidth * 0.275 + "px");
+        [...document.querySelectorAll(".number-form")].forEach(x => x.style.width = windowWidth * 0.45 + "px");
+        [...document.querySelectorAll(".number-form img")].forEach(x => x.style.width = windowWidth * 0.45 + "px");
+    } else {
+        document.querySelector(".image-container img").remove();
+        [...document.querySelectorAll(".image-container img")].forEach(x => x.style.width = windowWidth+100 + "px");
+        [...document.querySelectorAll(".number-form img")].forEach(x => x.style.width = windowWidth+100 + "px");
+    }
+</script>
 </html>

@@ -1,6 +1,6 @@
 function getQName() {
     let name = window.location.href.split("?q=")[1];
-    name == undefined ? name = "vova" : name = name;
+    name === undefined ? name = "vova" : name = name;
     return name;
 }
 
@@ -50,5 +50,36 @@ function loadWin() {
     // return Math.floor(Math.random()*items.length);
 }
 
+function loadHistory() {
+    return new Promise((resolve, reject) => {
+        function reqListener() {
+            resolve(this.responseText);
+        }
+        const oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "http://win.vkbc.ru/history");
+        oReq.send();
+    });
+}
 
-loadItems();
+function loadCodes() {
+    return new Promise((resolve, reject) => {
+        function reqListener() {
+            let data = this.responseText.split("<br>");
+            let newData = [];
+            for (let n of data) {
+                newData.push(n.split(" ")[1]);
+            }
+            resolve(newData);
+        }
+        const oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "http://win.vkbc.ru/codes");
+        oReq.send();
+    });
+}
+
+
+
+
+// loadItems();
